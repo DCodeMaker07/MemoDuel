@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MemoDuel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<main>
+  <header class="glass">
+    <h1>🧠 MemoDuel</h1>
+    <p class="sub">Duelo de memoria multijugador en tiempo real</p>
+  </header>
+
+  <section id="home" class="card-panel">
+    <form id="nameForm" class="name-form" autocomplete="off">
+      <label for="name">Elige tu nombre de usuario</label>
+      <div class="name-row">
+        <input id="name" maxlength="14" placeholder="Ej: Deivid" autofocus>
+        <button id="btnName" type="submit" class="confirm">Confirmar</button>
+      </div>
+      <p id="nameHint" class="hint"></p>
+    </form>
+    <fieldset id="options" class="locked" disabled>
+      <button id="btnCreate" class="primary">Crear sala</button>
+      <div class="or">o únete con un código</div>
+      <div class="row">
+        <input id="code" maxlength="4" placeholder="ABCD" style="text-transform:uppercase">
+        <button id="btnJoin">Unirse</button>
+      </div>
+    </fieldset>
+    <details><summary>¿Cómo se juega?</summary>
+      <p>Por turnos, voltea dos cartas. Si son iguales, sumas un punto y repites turno. Si no, memoriza dónde estaban: ¡el siguiente jugador las verá también! Gana quien junte más parejas.</p>
+    </details>
+  </section>
+
+  <section id="lobby" class="card-panel hidden">
+    <h2>Sala <span id="roomCode" class="code"></span></h2>
+    <p class="sub">Comparte este código (o abre otra pestaña) para que se unan.</p>
+    <ul id="lobbyPlayers" class="players"></ul>
+    <div id="hostControls">
+      <label for="level">Nivel
+        <select id="level">
+          <option value="facil">Fácil · 6 parejas · memoriza 4 s · 20 s por turno</option>
+          <option value="normal" selected>Normal · 8 parejas · memoriza 2 s · 15 s por turno</option>
+          <option value="dificil">Difícil · 12 parejas · memoriza 1 s · 10 s por turno</option>
+        </select>
+      </label>
+      <button id="btnStart" class="primary">Iniciar partida</button>
+    </div>
+    <p id="waitHost" class="sub hidden">Esperando al anfitrión…</p>
+    <button id="btnBack" type="button">← Volver al inicio</button>
+  </section>
+
+  <section id="game" class="hidden">
+    <aside id="rank" class="rank" aria-label="Turno y puntaje en vivo">
+      <div class="turn-box">
+        <h3>🎯 Turno</h3>
+        <div id="status" class="status"></div>
+      </div>
+      <h3>🏆 Puntaje en vivo</h3>
+      <div id="rankList" class="rank-list"></div>
+    </aside>
+    <div id="levelBadge" class="badge"></div>
+    <div id="timer" class="timer hidden" aria-live="off">
+      <svg class="hg" viewBox="0 0 60 80" aria-hidden="true">
+        <defs><clipPath id="glassClip"><path d="M10 6H50V14C50 30 34 36 30 40C34 44 50 50 50 66V74H10V66C10 50 26 44 30 40C26 36 10 30 10 14Z"/></clipPath></defs>
+        <g clip-path="url(#glassClip)" fill="currentColor">
+          <rect id="hgTop" x="0" y="14" width="60" height="26"/>
+          <rect id="hgBot" x="0" y="74" width="60" height="0"/>
+          <rect id="hgStream" x="29" y="40" width="2" height="34"/>
+        </g>
+        <path d="M10 6H50V14C50 30 34 36 30 40C34 44 50 50 50 66V74H10V66C10 50 26 44 30 40C26 36 10 30 10 14Z" fill="none" stroke="#eef0ff" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M6 5H54M6 75H54" stroke="#eef0ff" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <div id="timerNum" class="tnum">30</div>
+    </div>
+    <div id="board" class="board"></div>
+    <div id="endBox" class="end-overlay hidden">
+      <div class="card-panel">
+        <h2 id="endTitle"></h2>
+        <svg id="podium" class="podium" viewBox="0 0 420 280" role="img" aria-label="Podio de los tres primeros"></svg>
+        <p id="endExtra" class="sub"></p>
+        <button id="btnAgain" class="primary">Jugar otra vez</button>
+        <button id="btnLeave">Salir</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="toast" class="toast hidden"></div>
+</main>
+<button id="btnMute" class="mute" type="button" aria-label="Silenciar música">🔊</button>
+<script src="music.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

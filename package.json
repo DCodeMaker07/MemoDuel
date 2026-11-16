@@ -1,0 +1,14 @@
+{
+  "name": "memoduel",
+  "version": "1.0.0",
+  "description": "MemoDuel: juego multijugador en tiempo real para reforzar la memoria (calidad total - Deming)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": { "ws": "^8.18.0" },
+  "license": "MIT"
+}
