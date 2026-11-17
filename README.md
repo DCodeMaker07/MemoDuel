@@ -28,12 +28,5 @@ Para probar el multijugador abre **dos pestañas** (usa nombres distintos): una 
 
 Verifica: `https://TU-URL/health` debe responder JSON.
 
-## Checklist de entregables
-- [ ] Repo GitHub con el código (editables)
-- [ ] URL en línea funcionando
-- [ ] Pantallazos: inicio, sala, vista previa, partida con rachas, modo rojo, podio, `pnpm test`, `/health`
-- [ ] Video 2–3 min con dos ventanas jugando
-- [ ] Presentación según estructura (`docs/MemoDuel.pptx`; contenido completo en `docs/DOCUMENTO.md`)
-
 ## Estructura
 `game.js` lógica · `server.js` red y reloj · `public/` cliente · `test/` pruebas · `docs/DOCUMENTO.md` contenido académico · `docs/build-pptx.js` genera la presentación
